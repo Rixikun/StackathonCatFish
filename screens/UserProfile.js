@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Button, Image, View, Text, Form, Item, Label, Input } from 'react-native';
+import { StyleSheet, Button, Image, View, Text, Form, Item, Label, Input, FlatList } from 'react-native';
 import firebase from 'firebase'
 
 import ImagePick from './ImagePick'
@@ -36,19 +36,20 @@ export default class UserProfile extends React.Component {
     const { navigation } = this.props
     const { user, updateCurrUser } = navigation.getParam('user', 'updateCurrUser')
     return (
-      <View style={styles.container}>
+      <View style={{ ...styles.container, marginTop: 10 }}>
         <Text>Welcome {user.email}</Text>
-        <Image source={user.photoURL} />
-        <ImagePick />
-        <Button title="Update" onPress={updateCurrUser}>
-          <Text>Update</Text>
-        </Button>
-        <Button title="Where's that cat?" style={{ width: null, height: null, backgroundColor: 'yellow' }} onPress={() => {
-          navigate("SwipeAnimation")
-        }} >
-        </Button>
+        <View style={styles.container}>
+          <Image source={user.photoURL} />
+          <ImagePick />
+          <Button title="Update" onPress={updateCurrUser}>
+            <Text>Update</Text>
+          </Button>
+          <Button title="Where's that cat?" style={{ width: null, height: null, backgroundColor: 'yellow' }} onPress={() => {
+            navigate("SwipeAnimation")
+          }} >
+          </Button>
+        </View>
       </View>
-
     );
   }
 }
@@ -59,5 +60,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 5
   }
 })

@@ -10,21 +10,21 @@ export default function TextBoxThing() {
     setEnteredGoal(enteredText)
   }
   const addGoalHandler = () => {
-    setCourseGoals(currentGoals => [...currentGoals, enteredGoal])
+    setCourseGoals(currentGoals => [...currentGoals, { key: Math.random().toString(), value: enteredGoal }])
   }
 
   return (
     <View style={styles.container}>
       <View style={styles.inputWrapper}>
-        <TextInput placeholder="Your details here" style={styles.input} onChangeText={goalInputHandler} value={enteredGoal} />
+        <TextInput placeholder="Memo" style={styles.input} onChangeText={goalInputHandler} value={enteredGoal} />
         <Button title="Add" onPress={addGoalHandler} />
       </View>
       {/* default is vertical, choose 'horizontal' otherwise; make sure its on desired 'View', ScrollView preloads */}
-      <ScrollView>
+      {/* <ScrollView>
         {courseGoals.map(el => <View style={styles.listItem} key={courseGoals.indexOf(el)}><Text>{el}</Text></View>)}
-      </ScrollView>
-      {/* <FlatList data={courseGoals} renderItem={itemData => (<View style={styles.listItem}><Text>{itemData}</Text></View>)}>
-      </FlatList> */}
+      </ScrollView> */}
+      <FlatList data={courseGoals} renderItem={itemData => (<View style={styles.listItem}><Text style={{ color: "#a33505", fontStyle: 'bold', fontSize: 20 }}>{itemData.item.value}</Text></View>)}>
+      </FlatList>
     </View>
   );
 }
@@ -40,9 +40,11 @@ const styles = StyleSheet.create({
   inputWrapper: { padding: 50, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   listItem: {
     padding: 10,
-    backgroundColor: '#ccc',
-    borderColor: 'black',
-    borderWidth: 1
+    backgroundColor: '#fcf4d4',
+    borderColor: '#d4754c',
+    borderWidth: 0.5,
+    marginVertical: 10,
+    borderRadius: 5,
   }
 })
 

@@ -63,13 +63,13 @@
 //                   showsHorizontalScrollIndicator={false}
 //                 >
 //                   {/* passes in assests to Category component */}
-//                   <Category imageUri={require('./assets/images/cat02.jpg')}
+//                   <Category imageUri={require('../assets/images/cat02.jpg')}
 //                     name="Home"
 //                   />
-//                   <Category imageUri={require('./assets/images/cat04.jpg')}
+//                   <Category imageUri={require('../assets/images/cat04.jpg')}
 //                     name="Experiences"
 //                   />
-//                   <Category imageUri={require('./assets/images/cat05.jpg')}
+//                   <Category imageUri={require('../assets/images/cat05.jpg')}
 //                     name="Resturant"
 //                   />
 //                 </ScrollView>

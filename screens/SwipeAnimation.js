@@ -8,7 +8,11 @@ const Users = [
   { id: '2', uri: require('../assets/images/cat02.jpg') },
   { id: '3', uri: require('../assets/images/cat03.png') },
   { id: '4', uri: require('../assets/images/cat04.jpg') },
-  { id: '5', uri: require('../assets/images/cat05.jpg') }
+  { id: '5', uri: require('../assets/images/cat05.jpg') },
+  { id: '6', uri: require('../assets/images/cat06.jpg') },
+  { id: '7', uri: require('../assets/images/cat07.jpg') },
+  { id: '8', uri: require('../assets/images/cat08.png') },
+  { id: '9', uri: require('../assets/images/cat09.png') },
 ]
 
 export default class SwipeAnimation extends React.Component {
@@ -168,18 +172,18 @@ export default class SwipeAnimation extends React.Component {
     return (
       <View style={{ flex: 1 }}>
         {/* header */}
-        <View style={{ height: 60 }}>
-
+        <View style={{ height: 30, alignItems: 'center', margin: 10 }}>
+          <Text>Fishing~</Text>
         </View>
         {/* content */}
         <View style={{ flex: 1 }}>
           {this.renderUsers()}
         </View>
+
         {/* footer */}
-        <View style={{ height: 60 }}>
-
+        <View style={{ height: 30, alignItems: 'center', margin: 10 }}>
+          <Text>Swat or Purr?</Text>
         </View>
-
       </View >
     );
   }
