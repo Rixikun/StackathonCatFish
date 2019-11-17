@@ -1,0 +1,57 @@
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+import firebase from 'firebase'
+
+export default class App extends React.Component {
+  componentWillMount() {
+    const firebaseConfig = {
+      apiKey: "AIzaSyDqUx_yS93bsetnstawiEvUmAN3mBNdVOE",
+      authDomain: "swipeformeow.firebaseapp.com",
+      databaseURL: "https://swipeformeow.firebaseio.com",
+      projectId: "swipeformeow",
+      storageBucket: "swipeformeow.appspot.com",
+    }
+    firebase.initializeApp(firebaseConfig)
+    //https://firebase.google.com/docs/reference/js/firebase.database.Query for info
+    //GET console.logs changed data once
+    // firebase.database().ref('users').once('value', data => {
+    //   console.log(data.toJSON())
+    // })
+    //INSERT creates new table with time-delay
+    // setTimeout(() => {
+    firebase.database().ref('users/002').set({
+      name: 'dummy girl!',
+      age: 100,
+    }).then(() => {
+      console.log("success data!!!")
+    }).catch(err => {
+      console.log(err)
+    })
+    // }, 5000)
+    //UPDATES updates select table & column
+    // firebase.database().ref('users/001').update({
+    //   name: 'newbie'
+    // })
+    //DELETE removes select table(/column)
+    // firebase.database().ref('users/003/name').remove()
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Hello</Text>
+      </View>
+    )
+  }
+}
+
