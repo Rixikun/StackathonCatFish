@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Label, Button } from 'native-base'
 
@@ -13,6 +13,7 @@ import * as firebaseLogin from 'firebase'
 // firebase.initializeApp(firebaseConfig)
 
 import ImagePick from './ImagePick'
+import UserProfile from './UserProfile'
 
 export default class LogIn extends React.Component {
   constructor(props) {
@@ -23,23 +24,49 @@ export default class LogIn extends React.Component {
       imageURI: ''
     })
   }
-  signUpUser = (email, password, imageURI) => {
+
+  signUpUser = (email, password) => {
     try {
       if (this.state.password.length < 6) {
         alert("Please enter at least 6 characters")
         return;
       }
-      firebaseLogin.auth().createUserWithEmailAndPassword(email, password, imageURI)
+      firebaseLogin.auth().createUserWithEmailAndPassword(email, password)
     }
     catch (err) {
       console.log(err.toString())
     }
   }
 
-  loginUser = (email, password, imageURI) => {
+  updateCurrUser = () => {
     try {
-      firebaseLogin.auth().signInWithEmailAndPassword(email, password, imageURI).then(function (user) {
+      firebaseLogin.auth().onAuthStateChanged(function (user) {
+        if (user) {
+          // Updates the user attributes:
+          user.updateProfile({ // <-- Update Method here
+            photoURL: ""
+          }).then(function () {
+            var photoURL = user.photoURL;
+            console.log('updated user>>>>', user)
+          }, function (error) {
+            // An error happened.
+          });
+        }
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  loginUser = (email, password) => {
+    const { navigate } = this.props.navigation
+    try {
+      firebaseLogin.auth().signInWithEmailAndPassword(email, password).then(function (user) {
         console.log(user)
+        navigate("UserProfile", {
+          user,
+          updateCurrUser: this.updateCurrUser
+        })
       })
     }
     catch (err) {
@@ -50,9 +77,9 @@ export default class LogIn extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-
-        <ImagePick />
-
+        <View style={{ alignItems: 'center', justifyContent: 'center', margin: 'auto', padding: 0 }}>
+          <Image source={require('../assets/images/cat01.png')} style={{ borderRadius: 75, borderWidth: 1, borderColor: 'grey', margin: 20, width: 150, height: 150 }} />
+        </View>
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>

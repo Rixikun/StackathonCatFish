@@ -32,19 +32,19 @@ export default class LearnDatabase extends React.Component {
       console.log(data.toJSON())
     })
     //INSERT creates new table with time-delay
-    // setTimeout(() => {
-    firebase.database().ref('users/002').set({
-      name: 'dummy girl!',
-      age: 100,
-    }).then(() => {
-      console.log("success data!!!")
-    }).catch(err => {
-      console.log(err)
-    })
-    // }, 5000)
+    setTimeout(() => {
+      firebase.database().ref('users/004').set({
+        name: 'new kid!',
+        age: 12,
+      }).then(() => {
+        console.log("success data!!!")
+      }).catch(err => {
+        console.log(err)
+      })
+    }, 5000)
     //UPDATES updates select table & column
     firebase.database().ref('users/001').update({
-      name: 'new name yeeeeaeaaaahboi'
+      name: 'new name '
     })
     //DELETE removes select table(/column)
     // firebase.database().ref('users/003/name').remove()

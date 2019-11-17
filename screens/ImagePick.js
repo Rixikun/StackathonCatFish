@@ -13,14 +13,14 @@ export default class ImagePick extends React.Component {
     let { image } = this.state;
 
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={{ alignItems: 'center', justifyContent: 'center', margin: 'auto', padding: 0 }}>
         <Button
-          title="Pick an image from camera roll"
+          title="Pick an image"
           onPress={this._pickImage}
-          style={{ marginTop: 10 }} full rounded primary
+          style={{ marginTop: 10, padding: 10, height: 40, width: 100, borderRadius: 20 }} full rounded primary
         />
         {image &&
-          <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+          <Image source={{ uri: image }} style={{ borderRadius: 100, borderWidth: 1, borderColor: 'grey', margin: 20, width: 200, height: 200 }} />}
       </View>
     );
   }

@@ -105,10 +105,10 @@ export default class SwipeAnimation extends React.Component {
             style={
               [this.rotateAndTranslate,
               {
-                height: SCREEN_HEIGHT - 120,
+                height: SCREEN_HEIGHT - 90,
                 width: SCREEN_WIDTH,
                 padding: 10,
-                position: 'absolute'
+                position: 'absolute',
               }
               ]}>
 
@@ -122,7 +122,7 @@ export default class SwipeAnimation extends React.Component {
 
             <Image
               source={item.uri}
-              style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
+              style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20, marginBottom: 90 }}
             />
           </Animated.View >
         )
@@ -137,10 +137,10 @@ export default class SwipeAnimation extends React.Component {
                   opacity: this.nextCardOpacity,
                   transform: [{ scale: this.nextCardScale }]
                   ,
-                  height: SCREEN_HEIGHT - 120,
+                  height: SCREEN_HEIGHT - 90,
                   width: SCREEN_WIDTH,
                   padding: 10,
-                  position: 'absolute'
+                  position: 'absolute',
                 }
               ]}>
 
@@ -155,7 +155,7 @@ export default class SwipeAnimation extends React.Component {
 
             <Image
               source={item.uri}
-              style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20 }}
+              style={{ flex: 1, height: null, width: null, resizeMode: 'cover', borderRadius: 20, marginBottom: 90 }}
             />
           </Animated.View >
         )
