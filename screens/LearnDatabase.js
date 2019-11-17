@@ -11,8 +11,10 @@ const styles = StyleSheet.create({
 });
 
 import firebase from 'firebase'
+// import * as firebase from 'firebase'
 
-export default class App extends React.Component {
+
+export default class LearnDatabase extends React.Component {
   componentWillMount() {
     const firebaseConfig = {
       apiKey: "AIzaSyDqUx_yS93bsetnstawiEvUmAN3mBNdVOE",
@@ -21,12 +23,14 @@ export default class App extends React.Component {
       projectId: "swipeformeow",
       storageBucket: "swipeformeow.appspot.com",
     }
-    firebase.initializeApp(firebaseConfig)
+    if (!firebase.apps.length) {
+      firebase.initializeApp({});
+    }
     //https://firebase.google.com/docs/reference/js/firebase.database.Query for info
     //GET console.logs changed data once
-    // firebase.database().ref('users').once('value', data => {
-    //   console.log(data.toJSON())
-    // })
+    firebase.database().ref('users').once('value', data => {
+      console.log(data.toJSON())
+    })
     //INSERT creates new table with time-delay
     // setTimeout(() => {
     firebase.database().ref('users/002').set({
@@ -39,9 +43,9 @@ export default class App extends React.Component {
     })
     // }, 5000)
     //UPDATES updates select table & column
-    // firebase.database().ref('users/001').update({
-    //   name: 'newbie'
-    // })
+    firebase.database().ref('users/001').update({
+      name: 'new name yeeeeaeaaaahboi'
+    })
     //DELETE removes select table(/column)
     // firebase.database().ref('users/003/name').remove()
   }

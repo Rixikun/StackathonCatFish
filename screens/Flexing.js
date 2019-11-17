@@ -66,7 +66,7 @@ export default class Flexing extends React.Component {
             <Button title="Login" onPress={() => navigate("LogIn")} />
           </View>
           <View style={{ ...styles.box, backgroundColor: '#F1F8DE' }}>
-            <Text>Matches</Text>
+            <Button title="LearnDatabase" onPress={() => navigate("LearnDatabase")} />
           </View>
         </View>
 

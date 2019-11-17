@@ -2,40 +2,41 @@ import React, { useState } from 'react';
 import { StyleSheet, View, Text, Image } from 'react-native';
 import { Container, Content, Header, Form, Input, Item, Label, Button } from 'native-base'
 
-import * as firebase from 'firebase'
-const firebaseConfig = {
-  apiKey: "AIzaSyDqUx_yS93bsetnstawiEvUmAN3mBNdVOE",
-  authDomain: "swipeformeow.firebaseapp.com",
-  databaseURL: "https://swipeformeow.firebaseio.com",
-  projectId: "swipeformeow",
-  storageBucket: "swipeformeow.appspot.com",
-}
-firebase.initializeApp(firebaseConfig)
+import * as firebaseLogin from 'firebase'
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDqUx_yS93bsetnstawiEvUmAN3mBNdVOE",
+//   authDomain: "swipeformeow.firebaseapp.com",
+//   databaseURL: "https://swipeformeow.firebaseio.com",
+//   projectId: "swipeformeow",
+//   storageBucket: "swipeformeow.appspot.com",
+// }
+// firebase.initializeApp(firebaseConfig)
 
 export default class LogIn extends React.Component {
   constructor(props) {
     super(props)
     this.state = ({
       email: '',
-      password: ''
+      password: '',
+      imageURI: ''
     })
   }
-  signUpUser = (email, password) => {
+  signUpUser = (email, password, imageURI) => {
     try {
       if (this.state.password.length < 6) {
         alert("Please enter at least 6 characters")
         return;
       }
-      firebase.auth().createUserWithEmailAndPassword(email, password)
+      firebaseLogin.auth().createUserWithEmailAndPassword(email, password, imageURI)
     }
     catch (err) {
       console.log(err.toString())
     }
   }
 
-  loginUser = (email, password) => {
+  loginUser = (email, password, imageURI) => {
     try {
-      firebase.auth().signInWithEmailAndPassword(email, password).then(function (user) {
+      firebaseLogin.auth().signInWithEmailAndPassword(email, password, imageURI).then(function (user) {
         console.log(user)
       })
     }
@@ -69,6 +70,14 @@ export default class LogIn extends React.Component {
               autoCorrect={false}
               autoCapitalize="none"
               onChangeText={(password) => this.setState({ password })}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Profile Image</Label>
+            <Input
+              autoCorrect={false}
+              autoCapitalize="none"
+              onChangeText={(imageURI) => this.setState({ imageURI })}
             />
           </Item>
           <Button style={{ marginTop: 10 }} full rounded success onPress={() => this.loginUser(this.state.email, this.state.password)}>
