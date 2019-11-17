@@ -12,6 +12,8 @@ import * as firebaseLogin from 'firebase'
 // }
 // firebase.initializeApp(firebaseConfig)
 
+import ImagePick from './ImagePick'
+
 export default class LogIn extends React.Component {
   constructor(props) {
     super(props)
@@ -48,12 +50,9 @@ export default class LogIn extends React.Component {
   render() {
     return (
       <Container style={styles.container}>
-        <View style={{ alignItems: 'center', paddingBottom: 50 }}>
-          <Image
-            source={require('../assets/images/cat01.png')}
-            style={{ width: 100, height: 100 }}
-          />
-        </View>
+
+        <ImagePick />
+
         <Form>
           <Item floatingLabel>
             <Label>Email</Label>
@@ -72,14 +71,8 @@ export default class LogIn extends React.Component {
               onChangeText={(password) => this.setState({ password })}
             />
           </Item>
-          <Item floatingLabel>
-            <Label>Profile Image</Label>
-            <Input
-              autoCorrect={false}
-              autoCapitalize="none"
-              onChangeText={(imageURI) => this.setState({ imageURI })}
-            />
-          </Item>
+
+
           <Button style={{ marginTop: 10 }} full rounded success onPress={() => this.loginUser(this.state.email, this.state.password)}>
             <Text style={{ color: 'white' }}>Login</Text>
           </Button>
