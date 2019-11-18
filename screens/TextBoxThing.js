@@ -23,7 +23,7 @@ export default function TextBoxThing() {
       {/* <ScrollView>
         {courseGoals.map(el => <View style={styles.listItem} key={courseGoals.indexOf(el)}><Text>{el}</Text></View>)}
       </ScrollView> */}
-      <FlatList data={courseGoals} renderItem={itemData => (<View style={styles.listItem}><Text style={{ color: "#a33505", fontStyle: 'bold', fontSize: 20 }}>{itemData.item.value}</Text></View>)}>
+      <FlatList data={courseGoals} renderItem={itemData => (<View style={styles.listItem}><Text style={{ color: "#a33505", fontSize: 20 }}>{itemData.item.value}</Text></View>)}>
       </FlatList>
     </View>
   );

@@ -1,19 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import { StyleSheet, Image, Text, View, Animated, Dimensions, PanResponder } from 'react-native';
+
+import { Users } from './CatList'
 
 const SCREEN_HEIGHT = Dimensions.get('window').height
 const SCREEN_WIDTH = Dimensions.get('window').width
-const Users = [
-  { id: '1', uri: require('../assets/images/cat01.png'), like: null },
-  { id: '2', uri: require('../assets/images/cat02.jpg'), like: null },
-  { id: '3', uri: require('../assets/images/cat03.png'), like: null },
-  { id: '4', uri: require('../assets/images/cat04.jpg'), like: null },
-  { id: '5', uri: require('../assets/images/cat05.jpg'), like: null },
-  { id: '6', uri: require('../assets/images/cat06.jpg'), like: null },
-  { id: '7', uri: require('../assets/images/cat07.jpg'), like: null },
-  { id: '8', uri: require('../assets/images/cat08.png'), like: null },
-  { id: '9', uri: require('../assets/images/cat09.png'), like: null },
-]
+let likeyUsers = []
 
 export default class SwipeAnimation extends React.Component {
   constructor() {
@@ -76,6 +68,9 @@ export default class SwipeAnimation extends React.Component {
               like: true
             }, () => {
               this.position.setValue({ x: 0, y: 0 })
+              const foundCat = Users.find(cat => cat.id === this.state.currentIndex)
+              foundCat.like = this.state.like
+              likeyUsers = Users.filter(cat => cat.like === true)
             })
           })
         }
@@ -84,9 +79,10 @@ export default class SwipeAnimation extends React.Component {
           Animated.spring(this.position, {
             toValue: { x: -SCREEN_WIDTH - 100, y: gestureState.dy }
           }).start(() => {
-            this.setState({ currentIndex: this.state.currentIndex + 1 }, () => {
+            this.setState({ currentIndex: this.state.currentIndex + 1, like: false }, () => {
               this.position.setValue({ x: 0, y: 0 })
-
+              const foundCat = Users.find(cat => cat.id === this.state.currentIndex)
+              foundCat.like = this.state.like
             })
           })
         }
@@ -173,7 +169,6 @@ export default class SwipeAnimation extends React.Component {
   }
 
   render() {
-
     return (
       <View style={{ flex: 1 }}>
         {/* header */}
@@ -202,4 +197,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 })
+
+
+export { likeyUsers }
+
+
 

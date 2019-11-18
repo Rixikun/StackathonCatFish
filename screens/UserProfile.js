@@ -45,7 +45,15 @@ export default class UserProfile extends React.Component {
             <Text>Update</Text>
           </Button>
           <Button title="Where's that cat?" style={{ width: null, height: null, backgroundColor: 'yellow' }} onPress={() => {
-            navigate("SwipeAnimation")
+            navigate("Swipe")
+          }} >
+          </Button>
+          <Button title="Kitty Date?" onPress={() => {
+            navigate("Matches")
+          }} >
+          </Button>
+          <Button title="Memo" onPress={() => {
+            navigate("TextBoxThing")
           }} >
           </Button>
         </View>

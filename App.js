@@ -17,22 +17,23 @@ firebase.initializeApp(firebaseConfig)
 
 import LogIn from './screens/LogIn'
 import TextBoxThing from './screens/TextBoxThing'
-import LearnDatabase from './screens/LearnDatabase'
-import SwipeAnimation from './screens/SwipeAnimation'
+// import LearnDatabase from './screens/LearnDatabase'
+// import SwipeAnimation from './screens/SwipeAnimation'
 import ImagePick from './screens/ImagePick'
 import UserProfile from './screens/UserProfile'
 import Matches from './screens/Matches'
 import OneCat from './screens/OneCat'
+import Swipe from './screens/Swipe'
 
 //navigate b/w screens
 const MainNavigator = createStackNavigator({
-  // LogIn: { screen: LogIn },
-  // UserProfile: { screen: UserProfile },
-  // ImagePick: { screen: ImagePick },
-  // SwipeAnimation: { screen: SwipeAnimation },
-  // TextBoxThing: { screen: TextBoxThing },
+  LogIn: { screen: LogIn },
+  UserProfile: { screen: UserProfile },
+  ImagePick: { screen: ImagePick },
+  TextBoxThing: { screen: TextBoxThing },
   Matches: { screen: Matches },
-  OneCat: { screen: OneCat }
+  OneCat: { screen: OneCat },
+  Swipe
   // LearnDatabase: { screen: LearnDatabase }
 })
 
