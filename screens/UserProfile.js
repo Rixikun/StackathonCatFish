@@ -36,15 +36,15 @@ export default class UserProfile extends React.Component {
     const { navigation } = this.props
     const { user, updateCurrUser } = navigation.getParam('user', 'updateCurrUser')
     return (
-      <View style={{ ...styles.container, marginTop: 10 }}>
-        <Text>Welcome {user.email}</Text>
+      <View style={{ ...styles.container, margin: 0, backgroundColor: '#EFE2E5' }}>
+        <Text style={{ fontSize: 20, fontWeight: "bold", color: '#8E4F36', margin: 5 }}>Welcome {user.email}</Text>
         <View style={styles.container}>
           <Image source={user.photoURL} />
           <ImagePick />
           <Button title="Update" onPress={updateCurrUser}>
             <Text>Update</Text>
           </Button>
-          <Button title="Where's that cat?" style={{ width: null, height: null, backgroundColor: 'yellow' }} onPress={() => {
+          <Button title="Where's that cat?" style={{ backgroundColor: 'yellow' }} onPress={() => {
             navigate("Swipe")
           }} >
           </Button>
@@ -65,7 +65,7 @@ export default class UserProfile extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
     margin: 5

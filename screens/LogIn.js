@@ -76,9 +76,9 @@ export default class LogIn extends React.Component {
 
   render() {
     return (
-      <Container style={styles.container}>
+      <Container style={{ ...styles.container, backgroundColor: '#EFE2E5' }}>
         <View style={{ alignItems: 'center', justifyContent: 'center', margin: 'auto', padding: 0 }}>
-          <Image source={require('../assets/images/cat01.png')} style={{ borderRadius: 75, borderWidth: 1, borderColor: 'grey', margin: 20, width: 150, height: 150 }} />
+          <Image source={require('../assets/images/catIcon.png')} style={{ borderRadius: 75, borderWidth: 1, borderColor: 'grey', margin: 20, width: 150, height: 150 }} />
         </View>
         <Form>
           <Item floatingLabel>

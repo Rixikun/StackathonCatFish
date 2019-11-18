@@ -23,7 +23,7 @@ export default class Matches extends React.Component {
     ))
 
     return (
-      <View style={styles.container}>
+      <View style={{ ...styles.container, backgroundColor: '#EFE2E5' }}>
         <View style={{ height: 300 }}>
           <ScrollView >
             {meowMatches}
@@ -36,7 +36,7 @@ export default class Matches extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'transparent',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -14,7 +14,7 @@ export default function TextBoxThing() {
   }
 
   return (
-    <View style={styles.container}>
+    <View style={{ ...styles.container, backgroundColor: '#EFE2E5' }}>
       <View style={styles.inputWrapper}>
         <TextInput placeholder="Memo" style={styles.input} onChangeText={goalInputHandler} value={enteredGoal} />
         <Button title="Add" onPress={addGoalHandler} />
